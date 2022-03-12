@@ -8,7 +8,8 @@ AC_CHECK_HEADERS([sys/select.h sys/uio.h])
 AC_CHECK_HEADER([winsock2.h],
   [AC_DEFINE([HAVE_WINSOCK2_H], [1], [Define if you have winsock2.h on MINGW])
    LIBS="$LIBS -lwsock32"])
-AC_CHECK_HEADERS([ws2tcpip.h])
+AC_CHECK_HEADER([ws2tcpip.h], [AC_DEFINE([HAVE_WS2TCPIP_H], [1], [Define if you have ws2tcpip.h on MINGW])
+   LIBS="$LIBS -lws2_32"])
 
 # These tests are ordered based on solaris 8 tests
 AC_SEARCH_LIBS([sethostent], [nsl],
